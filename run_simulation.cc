@@ -6,8 +6,7 @@
 #include "TRandom3.h"
 #include "TString.h"
 
-// Your Custom Header
-#include "omnifold/Simulation.hh" 
+#include "OmniFold/Simulation.hh"
 
 int run_simulation() {
     // 1. Centralized Configuration
