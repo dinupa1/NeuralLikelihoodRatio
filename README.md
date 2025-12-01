@@ -2,14 +2,14 @@
 
 Estimating the likelihood ratio is a challenging task in real-world scenarios, particularly when the underlying densities are unknown. However, this can be achieved using a binary classifier.
 
-Consider a binary classifier $s(x)$ trained to distinguish between a **source distribution** (assigned label $y=0$) and a **target distribution** (assigned label $y=1$). The estimated likelihood ratio $\hat{r}(x)$ can be expressed as:
+Consider a binary classifier $s(x)$ trained to distinguish between a **source distribution** (assigned label $y=0$) and a **target distribution** (assigned label $y=1$). The estimated likelihood ratio $$\hat{r}(x)$$ can be expressed as:
 
 $$\hat{r}(x) = \frac{s(x)}{1 - s(x)}$$
 
 
 ## Analysis Environment
 
-This repository has been tested on the **Elastic Analysis Facility (EAF)** at Fermilab, using **AL9** (AlmaLinux 9) with the `LCG_105_cuda` software stack.
+This repository has been tested on the **Elastic Analysis Facility** ([EAF](https://arxiv.org/abs/2506.08222)) at Fermilab, using `AL9` (AlmaLinux 9) with the `LCG_105_cuda` software stack.
 
 To reproduce the analysis, execute the following shell script:
 
