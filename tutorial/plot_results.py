@@ -18,10 +18,10 @@ rc('lines', linewidth=2)
 
 # Load Histograms (uproot reads them as specific objects mplhep understands)
 with uproot.open("./outputs/simulation.root") as simulation:
-    HistSpinUp_X1 = simulation["HistSpinUp_X1"]        # Data (AN=0.2)
-    HistSpinDown_X1 = simulation["HistSpinDown_X1"]
-    HistSpinUp_X0_test = simulation["HistSpinUp_X0_test"]  # Sim (AN=0.0)
-    HistSpinDown_X0_test = simulation["HistSpinDown_X0_test"]
+    HistSpinUp_X1 = simulation["h_X1_spin_up_tree"]        # Data (AN=0.2)
+    HistSpinDown_X1 = simulation["h_X1_spin_down_tree"]
+    HistSpinUp_X0_test = simulation["h_X0_test_up_tree"]  # Sim (AN=0.0)
+    HistSpinDown_X0_test = simulation["h_X0_test_down_tree"]
 
 # Load Arrays
 with uproot.open("./outputs/result.root") as result:
@@ -55,7 +55,7 @@ ax.set_xlabel(r"$\phi$ [rad]")
 ax.set_ylabel("Normalized to unity")
 plt.legend(frameon=False, loc="lower center") # Moved legend to avoid overlap
 plt.tight_layout()
-plt.savefig("./outputs/SpinUp.png")
+plt.savefig("./outputs/imgs/SpinUp.png")
 plt.close()
 
 # --- Spin Down ---
@@ -68,7 +68,7 @@ ax.set_xlabel(r"$\phi$ [rad]")
 ax.set_ylabel("Normalized to unity")
 plt.legend(frameon=False, loc="lower center")
 plt.tight_layout()
-plt.savefig("./outputs/SpinDown.png")
+plt.savefig("./outputs/imgs/SpinDown.png")
 plt.close()
 
 # ==========================================
@@ -92,7 +92,7 @@ ax.set_title("Statistical Uncertainty")
 add_stat_box(ax, AN_runs, label="Stat. Bootstrap")
 
 plt.tight_layout()
-plt.savefig("./outputs/ANRuns.png")
+plt.savefig("./outputs/imgs/ANRuns.png")
 plt.close()
 
 # --- Systematic Uncertainty (Model) ---
@@ -109,5 +109,5 @@ ax.set_title("Model Uncertainty")
 add_stat_box(ax, model_runs, label="Model Systematics")
 
 plt.tight_layout()
-plt.savefig("./outputs/ModelRuns.png")
+plt.savefig("./outputs/imgs/ModelRuns.png")
 plt.close()

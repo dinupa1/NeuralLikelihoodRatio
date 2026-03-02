@@ -5,7 +5,7 @@ import awkward as ak
 import torch
 from torch.utils.data import DataLoader, random_split
 from sklearn.utils import resample
-from OmniFold import MLPClassifier, MLPDataset, train_mlp, calculate_likelihood_ratio
+from tutorial import MLPClassifier, MLPDataset, train_mlp, calculate_likelihood_ratio
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(f"Using device: {device}")
@@ -71,25 +71,25 @@ print("Loading data from ROOT file...")
 
 with uproot.open("./outputs/simulation.root") as simulation:
     # --- Simulation (X0) ---
-    X0_spin_up = simulation["TreeSpinUp_X0"]["X"].array(library="np")
-    W0_spin_up = simulation["TreeSpinUp_X0"]["W"].array(library="np")
+    X0_spin_up = simulation["X0_spin_up_tree"]["X"].array(library="np")
+    W0_spin_up = simulation["X0_spin_up_tree"]["W"].array(library="np")
     
-    X0_spin_down = simulation["TreeSpinDown_X0"]["X"].array(library="np")
-    W0_spin_down = simulation["TreeSpinDown_X0"]["W"].array(library="np")
+    X0_spin_down = simulation["X0_spin_down_tree"]["X"].array(library="np")
+    W0_spin_down = simulation["X0_spin_down_tree"]["W"].array(library="np")
 
     # --- Data (X1) ---
-    X1_spin_up = simulation["TreeSpinUp_X1"]["X"].array(library="np")
-    W1_spin_up = simulation["TreeSpinUp_X1"]["W"].array(library="np")
+    X1_spin_up = simulation["X1_spin_up_tree"]["X"].array(library="np")
+    W1_spin_up = simulation["X1_spin_up_tree"]["W"].array(library="np")
 
-    X1_spin_down = simulation["TreeSpinDown_X1"]["X"].array(library="np")
-    W1_spin_down = simulation["TreeSpinDown_X1"]["W"].array(library="np")
+    X1_spin_down = simulation["X1_spin_down_tree"]["X"].array(library="np")
+    W1_spin_down = simulation["X1_spin_down_tree"]["W"].array(library="np")
 
     # --- Test Set (X0 Test) ---
-    X0_test_spin_up = simulation["TreeSpinUp_X0_test"]["X"].array(library="np")
-    W0_test_spin_up = simulation["TreeSpinUp_X0_test"]["W"].array(library="np")
+    X0_test_spin_up = simulation["X0_test_up_tree"]["X"].array(library="np")
+    W0_test_spin_up = simulation["X0_test_up_tree"]["W"].array(library="np")
 
-    X0_test_spin_down = simulation["TreeSpinDown_X0_test"]["X"].array(library="np")
-    W0_test_spin_down = simulation["TreeSpinDown_X0_test"]["W"].array(library="np")
+    X0_test_spin_down = simulation["X0_test_down_tree"]["X"].array(library="np")
+    W0_test_spin_down = simulation["X0_test_down_tree"]["W"].array(library="np")
 
 # ==========================================
 # 3. Analysis Configuration
@@ -101,7 +101,7 @@ config = {
     'device': device
 }
 
-n_runs = 100
+n_runs = 2
 P_vals = [0.9, 0.7]
 
 # Containers
